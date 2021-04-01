@@ -105,7 +105,6 @@ p {
   margin-left: -15px;
   -webkit-transform: skewX(-45deg);
   transform: skewX(-45deg);
-  /* -- */
 }
 .pageContent::after {
   right: -10%;
@@ -210,6 +209,14 @@ p {
   font-size: 3em;
   padding-right: 20px;
 }
+.error {
+  height: 350px;
+}
+.error i {
+  color: #bd0909;
+  font-size: 3em;
+  padding-right: 20px;
+}
 .copyright a {
   color: #434345;
 }
@@ -236,15 +243,28 @@ p {
 }
 
 .visible {
-  -webkit-transition: opacity 3s ease-in-out;
-  -moz-transition: opacity 3s ease-in-out;
-  -ms-transition: opacity 3s ease-in-out;
-  -o-transition: opacity 3s ease-in-out;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
   opacity: 1;
 }
 .hidden {
   opacity: 0;
 }
+
+.numberCircle {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding: 8px;
+  background: #fff;
+  border: 3px solid #d9d9d9;
+  color: #a0a0a0;
+  text-align: center;
+  font: 10px Arial, sans-serif;
+}
+
 @media only screen and (min-width: 635px) {
 }
 
