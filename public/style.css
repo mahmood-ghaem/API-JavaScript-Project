@@ -1,0 +1,612 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+:root {
+  /* https://medium.com/code-better/css-units-for-font-size-px-em-rem-79f7e592bb97 */
+  font-size: 62.5%;
+  --bs-blue: #ac1460;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Muli', sans-serif;
+  height: 100vh;
+  font-size: 1.5rem;
+  cursor: default;
+}
+h1 {
+  font-size: 2.5em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+h4 {
+  font-size: 1.4em;
+  color: #fff;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.header {
+  background-color: #191919;
+  justify-self: flex-start;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+.logo {
+  color: #fff;
+  font-size: 30px;
+  margin-left: 20px;
+  align-self: center;
+  user-select: none;
+}
+.logo i {
+  color: #8668ad;
+  background-image: -webkit-linear-gradient(0deg, #8668ad 0%, #55bbeb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.logo span {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: #b1b1b1;
+}
+.social-media {
+  color: #fff;
+  font-size: 20px;
+  margin-right: 20px;
+  margin-top: 6px;
+  user-select: none;
+  align-self: flex-end;
+}
+.social-media a {
+  color: #fff;
+  text-decoration: none;
+}
+.social-media a:hover {
+  color: #b1b1b1;
+  text-decoration: none;
+}
+.pageContent {
+  flex-grow: 1;
+  position: relative;
+  display: block;
+}
+.pageContent::before {
+  left: -10%;
+  margin-left: -15px;
+  -webkit-transform: skewX(-45deg);
+  transform: skewX(-45deg);
+  /* -- */
+}
+.pageContent::after {
+  right: -10%;
+  margin-right: -15px;
+  -webkit-transform: skewX(45deg);
+  transform: skewX(45deg);
+}
+.pageContent::after,
+.pageContent::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  margin-top: -1px;
+  height: 30px;
+  width: 60%;
+  z-index: 1;
+  background: #ffffff;
+}
+.footer {
+  background: #191919 url(../public/images/background-02-481x360.png);
+  justify-self: self-end;
+  min-height: 150px;
+  margin-top: -1px;
+  display: block;
+  padding-top: 57px;
+  text-align: center;
+}
+.first-name-input {
+  width: 311px;
+}
+.first-name-input:focus {
+  outline: none;
+}
+.estimate-nationality-button {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: 0.2s;
+  transition-delay: 0.1s;
+  backface-visibility: hidden;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.first-name-input,
+.estimate-nationality-button {
+  color: #ffffff;
+  background-color: transparent;
+  border: 2px solid #fff;
+  padding: 17px 24px;
+  font-size: 17px;
+  line-height: 32px;
+  border-radius: 5px;
+  margin-left: 5px;
+  white-space: nowrap;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 900;
+  vertical-align: middle;
+  user-select: none;
+  margin: 5px;
+}
+.estimate-nationality-button:before {
+  left: -20px;
+  transform: translate(-50%, -50%);
+}
+.estimate-nationality-button:after {
+  right: -20px;
+  transform: translate(50%, -50%);
+}
+.estimate-nationality-button:before,
+.estimate-nationality-button:after {
+  position: absolute;
+  top: 50%;
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.5s;
+  z-index: -1;
+}
+.estimate-nationality-button:hover {
+  color: #434345;
+  background-color: #ffffff;
+  border-color: #ffffff;
+  outline: none;
+  transition-delay: 0.45s;
+}
+.estimate-nationality-button:hover:before {
+  -webkit-animation: criss-cross-left 0.8s;
+  animation: criss-cross-left 0.8s;
+}
+.estimate-nationality-button:hover:after {
+  -webkit-animation: criss-cross-right 0.8s;
+  animation: criss-cross-right 0.8s;
+}
+
+@media only screen and (min-width: 635px) {
+}
+
+@-webkit-keyframes criss-cross-left {
+  0% {
+    left: -20px;
+  }
+
+  50% {
+    left: 50%;
+    width: 20px;
+    height: 20px;
+  }
+
+  100% {
+    left: 50%;
+    width: 375px;
+    height: 375px;
+  }
+}
+
+@keyframes criss-cross-left {
+  0% {
+    left: -20px;
+  }
+
+  50% {
+    left: 50%;
+    width: 20px;
+    height: 20px;
+  }
+
+  100% {
+    left: 50%;
+    width: 375px;
+    height: 375px;
+  }
+}
+
+@-webkit-keyframes criss-cross-right {
+  0% {
+    right: -20px;
+  }
+
+  50% {
+    right: 50%;
+    width: 20px;
+    height: 20px;
+  }
+
+  100% {
+    right: 50%;
+    width: 375px;
+    height: 375px;
+  }
+}
+
+@keyframes criss-cross-right {
+  0% {
+    right: -20px;
+  }
+
+  50% {
+    right: 50%;
+    width: 20px;
+    height: 20px;
+  }
+
+  100% {
+    right: 50%;
+    width: 375px;
+    height: 375px;
+  }
+}
+.startContainer {
+  background-color: #2c2c38;
+  display: flex;
+  width: 80%;
+  height: 60%;
+  position: relative;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.quizContainer {
+  position: relative;
+  display: none;
+  background-color: #2c2c38;
+  width: 80%;
+  height: 60%;
+}
+
+.quizContainer.showQuiz {
+  display: flex;
+  flex-direction: column;
+  background-color: #2c2c38;
+  justify-content: space-between;
+}
+
+.quizContainer h3 {
+  color: #fff;
+  border-radius: 5px;
+  background-color: #6b39bd;
+  margin: 10px;
+  display: block;
+  padding: 10px;
+  text-align: center;
+}
+
+.question {
+  font-size: 1em;
+  color: #fff;
+}
+
+@media only screen and (min-width: 576px) {
+  .startContainer,
+  .quizContainer {
+    width: 70%;
+    height: 60%;
+  }
+  .overlay {
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .startContainer,
+  .quizContainer {
+    width: 60%;
+    height: 60%;
+  }
+  .overlay {
+    width: 60%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .startContainer,
+  .quizContainer {
+    width: 60%;
+    height: 60%;
+  }
+  .overlay {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .startContainer,
+  .quizContainer {
+    width: 40%;
+    height: 60%;
+  }
+  .overlay {
+    width: 40%;
+  }
+}
+
+.startFooter {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  background-color: #171724;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #fff;
+  align-items: center;
+  padding: 0 10px;
+}
+.startContainer:hover > div {
+  transform: translateY(0%);
+}
+
+.startFooter a,
+.quizFooter a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  position: relative;
+}
+
+.startFooter a:hover,
+.quizFooter a:hover {
+  color: #ccc;
+}
+
+.startFooter a:before,
+.quizFooter a:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #fff;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out 0s;
+}
+.startFooter a:hover:before,
+.quizFooter a:hover:before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+.startFooter a:hover .startArrow,
+.quizFooter a:hover .nextArrow {
+  animation: bounceArrowRight 0.5s;
+}
+.quizFooter a:hover .prevArrow {
+  animation: bounceArrowLeft 0.5s;
+}
+
+@keyframes bounceArrowRight {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  25% {
+    opacity: 0;
+    transform: translateX(0.5rem);
+  }
+  26% {
+    opacity: 0;
+    transform: translateX(0.5rem);
+  }
+  55% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceArrowLeft {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  25% {
+    opacity: 0;
+    transform: translateX(-0.5rem);
+  }
+  26% {
+    opacity: 0;
+    transform: translateX(-0.5rem);
+  }
+  55% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.quizFooter {
+  height: 60px;
+  width: 100%;
+  background-color: #171724;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #fff;
+  justify-self: end;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.checkIcon {
+  font-size: 10rem;
+  color: green;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+
+.failedIcon {
+  font-size: 10rem;
+  color: red;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+
+.realScoreText {
+  color: #6b39bd;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.overlay {
+  background-color: rgba(44, 44, 56, 0.95);
+  position: absolute;
+  height: 100%;
+  width: 0;
+  z-index: 1010;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 15%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  white-space: nowrap;
+}
+
+.cheat-content,
+.help-content {
+  white-space: normal;
+  color: rgb(224, 149, 9);
+}
+
+.overlay a,
+.helpMenubar a,
+.cheatMenubar a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 1.1em;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover,
+.overlay a:focus,
+.helpMenubar a:hover,
+.helpMenubar a:focus,
+.cheatMenubar a:hover,
+.cheatMenubar a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn,
+.helpMenubar .closebtn,
+.cheatMenubar .closebtn {
+  position: absolute;
+  top: 0px;
+  right: 15px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.menuBars,
+.helpButton,
+.cheatButton {
+  position: absolute;
+  cursor: pointer;
+}
+
+.menuBars a,
+.helpButton a,
+.cheatButton a {
+  color: #fff;
+}
+.menuBars a:hover,
+.helpButton a:hover,
+.cheatButton a:hover {
+  color: #2c2c38;
+}
+
+.menuBars {
+  top: 22px;
+  left: 22px;
+}
+
+.helpButton {
+  top: 22px;
+  right: 22px;
+}
+
+.cheatButton {
+  top: 22px;
+  right: 44px;
+}
+
+.helpMenubar,
+.cheatMenubar {
+  background-color: rgba(44, 44, 56, 0.95);
+  position: absolute;
+  width: 50%;
+  height: 0;
+  z-index: 1001;
+  right: 0;
+  top: 60px;
+  overflow-y: hidden;
+  transition: 0.5s;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.blink_icon {
+  float: right;
+  animation: blinker 1.5s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
