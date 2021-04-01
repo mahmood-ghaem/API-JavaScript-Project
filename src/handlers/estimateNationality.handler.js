@@ -11,6 +11,7 @@ import { getData, getImageFile } from '../utils/API.util.js';
 import {
   renderResult,
   showError,
+  changeDynamicContentVisibility,
   showLoading,
   showChart,
 } from '../views/renderResult.view.js';
@@ -22,6 +23,7 @@ import {
  */
 
 export const estimateNationality = async () => {
+  changeDynamicContentVisibility(false);
   showLoading(true);
 
   const { name, country } = await getCountries();
@@ -29,8 +31,11 @@ export const estimateNationality = async () => {
 
   const chartImageUrl = await getChart(country);
   showChart(chartImageUrl);
-
-  showLoading(false);
+  //debugger;
+  setTimeout(() => {
+    showLoading(false);
+    changeDynamicContentVisibility(true);
+  }, 3000);
 };
 
 const getCountries = () => {

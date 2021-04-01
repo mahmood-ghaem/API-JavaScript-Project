@@ -9,6 +9,6 @@ import { estimateNationality } from '../handlers/estimateNationality.handler.js'
  */
 
 const estimateNationalityButton = document.querySelector(
-  '#estimate_nationality_button'
+  '.estimate-nationality-button',
 );
 estimateNationalityButton.addEventListener('click', estimateNationality);

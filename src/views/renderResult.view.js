@@ -20,13 +20,27 @@ export const showChart = (chartImageUrl) => {
   // document.body.appendChild(imageFile);
 };
 
-export const showLoading = (toggle) => {
+export const changeDynamicContentVisibility = (toggle) => {
+  const dynamicContent = document.querySelector('.dynamicContent');
   switch (toggle) {
     case true:
-      console.log('Loading start');
+      dynamicContent.classList.remove('hidden');
       break;
     case false:
-      console.log('Loading end');
+      dynamicContent.classList.add('hidden');
+      break;
+  }
+};
+
+export const showLoading = (toggle) => {
+  const loading = document.querySelector('.loading');
+
+  switch (toggle) {
+    case true:
+      loading.classList.remove('loaded');
+      break;
+    case false:
+      loading.classList.add('loaded');
       break;
   }
 };

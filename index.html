@@ -16,6 +16,9 @@
   </head>
 
   <body>
+    <div class="loading loaded">
+      <img src="./public/images/loading.gif" alt="Loading" />
+    </div>
     <div class="container-fluid d-flex flex-column h-100 p-0 overflow-hidden">
       <div class="header">
         <div class="logo">
@@ -34,16 +37,77 @@
         </div>
       </div>
       <div class="pageContent">
-        <h2 class="offset-top-10">
-          <span class="big">Even More Features Available</span>
-        </h2>
-        <input type="text" id="first_name_input" />
-        <button id="estimate_nationality_button">
-          Estimate the Nationality
-        </button>
+        <div class="dynamicContent visible">
+          <h1 class="text-center m-5">
+            <span>Predict the nationality of a name</span>
+          </h1>
+          <div class="row m-5 intro">
+            <div class="col-md-6 d-flex p-5">
+              <div><i class="fas fa-globe"></i></div>
+              <div>
+                <h2>An API for predicting nationality from a name</h2>
+                <p>
+                  Nationalize.io predicts the nationality of a person given
+                  their name. Use the API for analytics, ad segmenting,
+                  demographic statistics etc. Be sure to check out the
+                  <a href="https://nationalize.io/use-cases" target="_blank"
+                    >use cases</a
+                  >
+                  as well.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 d-flex p-5">
+              <div><i class="fas fa-chart-pie"></i></div>
+              <div>
+                <h2>Make Beautiful Charts with a Single API Call</h2>
+                <p>
+                  In this project I used
+                  <a href="https://www.image-charts.com" target="_blank">
+                    Image-Charts</a
+                  >
+                  to display the result of predicting nationality from a name
+                  and then by calculating the result, makes a link to call API
+                  and shows a chart on the page.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 d-flex p-5">
+              <div><i class="fas fa-piggy-bank"></i></div>
+              <div>
+                <h2>The API is free no sign up or API key needed</h2>
+                <p>
+                  The API is free for up to 1000 names/day. No sign up or API
+                  key needed. So go ahead and try it out. If you need more
+                  requests, you can sign up for an API key at
+                  <a href="https://store.nationalize.io" target="_blank"
+                    >store.nationalize.io</a
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 d-flex p-5">
+              <div><i class="far fa-chart-bar"></i></div>
+              <div>
+                <h2>Easiest way to embed charts as image in emails, pdfs</h2>
+                <p>
+                  No need to spend hours to setup, develop and scale a complex
+                  server-side solution. Very easy to use a chart can be obtained
+                  just by calling the API. Can be used on web pages, emails and
+                  pdfs... .
+                </p>
+              </div>
+            </div>
+            <div class="col-12 text-center">
+              Enter a name in the box below to estimate the Nationality and show
+              the result.
+            </div>
+          </div>
+        </div>
       </div>
       <div class="footer">
         <input
+          id="first_name_input"
           type="text"
           class="first-name-input"
           placeholder="Enter Your First Name..."
@@ -51,6 +115,22 @@
         <a class="estimate-nationality-button" href="#">
           Estimate the Nationality
         </a>
+        <div class="m-4 copyright">
+          <span>
+            Copyright 2021 ©
+            <a href="https://www.hackyourfuture.net" target="_blank">
+              HackYourFuture
+            </a>
+          </span>
+          -
+          <span>
+            Made with <i class="fas fa-heart"></i> and
+            <i class="fas fa-coffee"></i> by
+            <a href="https://github.com/mahmood-ghaem" target="_blank">
+              Mahmood
+            </a>
+          </span>
+        </div>
       </div>
     </div>
     <script src="./src/init/index.js" type="module"></script>
