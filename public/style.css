@@ -139,6 +139,7 @@ p {
 }
 .first-name-input:focus {
   outline: none;
+  background-color: transparent;
 }
 .estimate-nationality-button {
   position: relative;
