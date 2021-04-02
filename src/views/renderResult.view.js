@@ -57,6 +57,7 @@ const showFirstName = (firstName) => {
   h1.classList.add('text-center', 'm-5');
   h1.appendChild(span);
   dynamicContent.appendChild(h1);
+  //h1.scrollIntoView();
 };
 
 const showEstimateData = (countries, chartImageUrl) => {
@@ -71,7 +72,7 @@ const showEstimateData = (countries, chartImageUrl) => {
       <h2>Result</h2>
       <p>
       In the list below, you can see the result of the predicted nationality of the name you entered. 
-      Also, in the chart, you can see the percent of the prediction in the form of a chart.
+      Also, in the chart, you can see the percent of the prediction in the form of a pie chart.
       </p>
     </div>
   </div>
