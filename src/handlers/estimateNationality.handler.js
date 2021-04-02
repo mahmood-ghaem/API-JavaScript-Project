@@ -8,12 +8,14 @@ import {
   getCountryDetails,
 } from '../logic/getDataFromAPI.logic.js';
 
+import { renderResult, showError } from '../views/renderResult.view.js';
+
 import {
-  renderResult,
-  showError,
-  changeDynamicContentVisibility,
+  changeContentVisibility,
   showLoading,
-} from '../views/renderResult.view.js';
+} from '../views/manipulationDom.view.js';
+
+let currentPage = 'home';
 
 /**
  * @estimateNationality
@@ -28,7 +30,18 @@ export const estimateNationality = async () => {
     showError('Please enter the name correctly!', firstName);
     return;
   }
-  changeDynamicContentVisibility(false);
+  switch (currentPage) {
+    case 'home':
+      changeContentVisibility(false, 'introContent');
+      break;
+    case 'result':
+      changeContentVisibility(false, 'resultContent');
+      break;
+    case 'error':
+      changeContentVisibility(false, 'errorContent');
+      break;
+  }
+
   showLoading(true);
   const { name, country } = await getCountries();
 
@@ -40,14 +53,15 @@ export const estimateNationality = async () => {
       addCountryDetails(country);
       const chartImageUrl = await getChart(country);
       renderResult({ name, country, chartImageUrl });
-
+      currentPage = 'result';
       setTimeout(() => {
         showLoading(false);
-        changeDynamicContentVisibility(true);
+        changeContentVisibility(true, 'resultContent');
       }, 1000);
     }
   } else {
     showError('Request error!', firstName);
+    currentPage = 'error';
   }
 };
 
@@ -75,5 +89,4 @@ const addCountryDetails = async (countries) => {
     country.population = numberWithCommas(population);
     country.flag = flag;
   });
-  console.log(countries);
 };

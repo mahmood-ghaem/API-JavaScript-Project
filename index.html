@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="pageContent">
-        <div class="dynamicContent visible">
+        <div class="introContent visible">
           <h1 class="text-center m-5">Predict the nationality of a name</h1>
           <div class="row m-5 intro">
             <div class="col-md-6 d-flex p-5">
@@ -99,6 +99,58 @@
             <div class="col-12 text-center">
               Enter a name in the box below to estimate the Nationality and show
               the result.
+            </div>
+          </div>
+        </div>
+        <!-- ----------------------------------------- -->
+        <div class="resultContent visible hidden">
+          <h1 id="result_header" class="text-center m-5"></h1>
+          <div class="row m-5 result">
+            <div class="col-lg-6 p-5">
+              <div class="d-flex p-5">
+                <i class="far fa-edit" aria-hidden="true"></i>
+                <div>
+                  <h2>Result</h2>
+                  <p>
+                    In the list below, you can see the result of the predicted
+                    nationality of the name you entered. Also, in the chart, you
+                    can see the percent of the prediction in the form of a pie
+                    chart.
+                  </p>
+                </div>
+              </div>
+              <div class="ms-5 ps-5">
+                <div class="d-flex ps-5 pb-3">
+                  <div class="numberCircle">1</div>
+                  <div class="ms-4">
+                    <img id="flag0" class="flag" />
+                    <h3 id="country0"></h3>
+                    <p id="probability0"></p>
+                    <p id="population0"></p>
+                  </div>
+                </div>
+                <div class="d-flex ps-5 pb-3">
+                  <div class="numberCircle">2</div>
+                  <div class="ms-4">
+                    <img id="flag1" class="flag" />
+                    <h3 id="country1"></h3>
+                    <p id="probability1"></p>
+                    <p id="population1"></p>
+                  </div>
+                </div>
+                <div class="d-flex ps-5 pb-3">
+                  <div class="numberCircle">3</div>
+                  <div class="ms-4">
+                    <img id="flag2" class="flag" />
+                    <h3 id="country2"></h3>
+                    <p id="probability2"></p>
+                    <p id="population2"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 p-5 image-chart">
+              <img id="image_chart" alt="image-chart" />
             </div>
           </div>
         </div>

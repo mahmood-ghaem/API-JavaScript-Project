@@ -205,7 +205,8 @@ p {
   animation: criss-cross-right 0.8s;
 }
 
-.intro i {
+.intro i,
+.result i {
   color: #d9d9d9;
   font-size: 3em;
   padding-right: 20px;
