@@ -24,13 +24,12 @@ export const estimateNationality = async () => {
     return;
   }
   const { name, country } = await getCountries();
-
   if (country != undefined) {
     if (country.length < 3) {
       showError('The name you entered was not in our database!', firstName);
     } else {
       changeProbabilityPercent(country);
-      addCountryDetails(country);
+      await addCountryDetails(country);
       const chartImageUrl = await getChart(country);
       renderResult({ name, country, chartImageUrl });
     }

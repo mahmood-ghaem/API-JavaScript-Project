@@ -8,6 +8,7 @@ import {
 } from '../data.js';
 
 import { getData, getImageFile } from '../utils/API.util.js';
+import { showError } from '../views/renderResult.view.js';
 
 export const getCountries = () => {
   const firstName = document.getElementById('first_name_input').value;

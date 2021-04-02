@@ -1,12 +1,7 @@
 'use strict';
 
-import {
-  changeContentVisibility,
-  changeContentDisplay,
-  showLoading,
-} from '../views/manipulationDom.view.js';
-
 import { changePages } from '../logic/changePages.logic.js';
+import { changeContentDisplay } from '../views/manipulationDom.view.js';
 
 export const renderResult = ({ name, country, chartImageUrl }) => {
   changePages('result');
@@ -14,44 +9,33 @@ export const renderResult = ({ name, country, chartImageUrl }) => {
 };
 
 export const showError = (error, firstName) => {
-  deleteIntroContent();
-  showFirstName(firstName);
+  changePages('error');
+  document.querySelector(
+    '#error_header',
+  ).textContent = `Predict the nationality of "${firstName.toUpperCase()}"`;
 
-  const dynamicContent = document.querySelector('.dynamicContent');
-  const div = document.createElement('div');
-  div.classList.add('row', 'm-5', 'error');
-  div.innerHTML = `
-<div class="col-md-6 p-5">
-  <div class="d-flex p-5">
-    <i class="fas fa-exclamation-circle"></i>
-    <div>
-      <h2>Some thing was wrong</h2>
-      <p>
-        ${error}
-      </p>
-    </div>
-  </div>
-</div>`;
-  dynamicContent.appendChild(div);
-  changeContentVisibility(true, 'resultContent');
-  showLoading(false);
+  document.querySelector(
+    '#error_text',
+  ).textContent = `Error received from the system: ${error}`;
 };
 
 const showImageChartError = () => {
-  const intro = document.querySelector('.intro');
-  const div = document.createElement('div');
-  div.classList.add('col-md-6', 'p-5', 'error');
-  div.innerHTML = `
-<div class="d-flex p-5">
-  <i class="fas fa-exclamation-circle"></i>
-  <div>
-    <h2>Some thing was wrong</h2>
-    <p>
-      Can not load image chart!
-    </p>
-  </div>
-</div>`;
-  intro.appendChild(div);
+  const imageChart = document.querySelector('.image-chart-error');
+  const divParent = document.createElement('div');
+  divParent.classList.add('d-flex', 'p-5');
+  const icon = document.createElement('i');
+  icon.classList.add('fas', 'fa-exclamation-circle');
+  const h2 = document.createElement('h2');
+  h2.textContent = 'Some thing was wrong';
+  const p = document.createElement('p');
+  p.textContent = 'Can not load image chart!';
+  const divChild = document.createElement('div');
+
+  divChild.appendChild(h2);
+  divChild.appendChild(p);
+  divParent.appendChild(icon);
+  divParent.appendChild(divChild);
+  imageChart.appendChild(divParent);
 };
 
 const showEstimateData = (name, countries, chartImageUrl) => {
@@ -75,16 +59,20 @@ const showEstimateData = (name, countries, chartImageUrl) => {
         countries[i].country_id;
     }
     if (countries[i].population != undefined) {
-      document.querySelector(`#population${i}`).textContent =
-        countries[i].population;
+      document.querySelector(
+        `#population${i}`,
+      ).textContent = `Population: ${countries[i].population}`;
     }
-    document.querySelector(`#probability${i}`).textContent =
-      countries[i].probability;
+    document.querySelector(
+      `#probability${i}`,
+    ).textContent = `probability: ${Math.round(countries[i].probability)}%`;
   }
 
   if (chartImageUrl == '') {
     showImageChartError();
+    changeContentDisplay(false, 'image-chart');
   } else {
     document.querySelector('#image_chart').setAttribute('src', chartImageUrl);
+    changeContentDisplay(true, 'image-chart');
   }
 };

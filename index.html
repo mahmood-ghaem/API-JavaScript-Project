@@ -25,7 +25,7 @@
           <i class="fas fa-cogs"></i>&nbsp;{ api } <span>JavaScript</span>
         </div>
         <div class="social-media">
-          <a class="home-button" href="#">
+          <a class="home-button visible hidden" href="#">
             <i class="fas fa-home"></i>
           </a>
           <a
@@ -40,6 +40,7 @@
         </div>
       </div>
       <div class="pageContent">
+        <!-- --------------------home content--------------------- -->
         <div class="homeContent visible">
           <h1 class="text-center m-5">Predict the nationality of a name</h1>
           <div class="row m-5 intro">
@@ -105,7 +106,7 @@
             </div>
           </div>
         </div>
-        <!-- ----------------------------------------- -->
+        <!-- --------------------result content--------------------- -->
         <div class="resultContent visible hidden">
           <h1 id="result_header" class="text-center m-5"></h1>
           <div class="row m-5 result">
@@ -152,8 +153,28 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-6 p-5 image-chart">
-              <img id="image_chart" alt="image-chart" />
+            <div class="col-lg-6 p-5">
+              <div class="image-chart-error"></div>
+              <div class="image-chart">
+                <img id="image_chart" alt="image-chart" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- --------------------error content--------------------- -->
+        <div class="errorContent visible hidden">
+          <h1 id="error_header" class="text-center m-5">
+            The application encountered an error
+          </h1>
+          <div class="row m-5 error">
+            <div class="col-lg-6 p-5">
+              <div class="d-flex p-5">
+                <i class="fas fa-exclamation-circle"></i>
+                <div>
+                  <h2>Some thing was wrong</h2>
+                  <p id="error_text"></p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
