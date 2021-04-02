@@ -1,12 +1,12 @@
 'use strict';
 
-import {
-  estimateNationalityAddress,
-  imageChartPrefixAddress,
-  imageChartPostfixAddress,
-} from '../data.js';
+import { checkOnlyLetters, numberWithCommas } from '../utils/my.util.js';
 
-import { getData, getImageFile } from '../utils/API.util.js';
+import {
+  getCountries,
+  getChart,
+  getCountryDetails,
+} from '../logic/getDataFromAPI.logic.js';
 
 import {
   renderResult,
@@ -23,72 +23,37 @@ import {
 
 export const estimateNationality = async () => {
   const firstName = document.getElementById('first_name_input').value;
+
+  if (!checkOnlyLetters(firstName)) {
+    showError('Please enter the name correctly!', firstName);
+    return;
+  }
   changeDynamicContentVisibility(false);
   showLoading(true);
   const { name, country } = await getCountries();
 
   if (country != undefined) {
-    changeProbabilityPercent(country);
-    const chartImageUrl = await getChart(country);
-    renderResult({ name, country, chartImageUrl });
+    if (country.length < 3) {
+      showError('The name you entered was not in our database!', firstName);
+    } else {
+      changeProbabilityPercent(country);
+      addCountryDetails(country);
+      const chartImageUrl = await getChart(country);
+      renderResult({ name, country, chartImageUrl });
 
-    setTimeout(() => {
-      showLoading(false);
-      changeDynamicContentVisibility(true);
-    }, 1000);
+      setTimeout(() => {
+        showLoading(false);
+        changeDynamicContentVisibility(true);
+      }, 1000);
+    }
   } else {
     showError('Request error!', firstName);
-    //throw new Error('Request error!');
   }
-};
-
-const getCountries = () => {
-  const firstName = document.getElementById('first_name_input').value;
-
-  return getData(estimateNationalityAddress + firstName)
-    .then()
-    .catch((error) => {
-      showError(error, firstName);
-      throw new Error(error);
-    });
-};
-
-const getChart = (countries) => {
-  const chartLinkAddress = createChartLinkAddress(countries);
-  console.log(chartLinkAddress);
-
-  try {
-    return getImageFile(chartLinkAddress)
-      .then((image) => {
-        return URL.createObjectURL(image);
-      })
-      .catch((error) => {
-        return './public/images/chart_error.png';
-        //throw new Error('There is a problem: ', error);
-      });
-  } catch (error) {
-    //showError(error);
-  }
-};
-
-const createChartLinkAddress = (countries) => {
-  const chartLabels = [];
-  const chartProbabilities = [];
-
-  countries.forEach((country) => {
-    chartLabels.push(country.country_id);
-    chartProbabilities.push(country.probability);
-  });
-
-  return `${imageChartPrefixAddress}&chd=t:${chartProbabilities.join(
-    ',',
-  )}&chl=${chartLabels.join('|')}${imageChartPostfixAddress}`;
 };
 
 const changeProbabilityPercent = (countries) => {
   const chartLabels = [];
   const chartProbabilities = [];
-
   countries.forEach((country) => {
     chartLabels.push(country.country_id);
     chartProbabilities.push(country.probability);
@@ -99,6 +64,16 @@ const changeProbabilityPercent = (countries) => {
   countries.forEach((country) => {
     country.probability = (country.probability * 100) / probabilitiesSum;
   });
+};
 
-  //return countries;
+const addCountryDetails = async (countries) => {
+  await countries.forEach(async (country) => {
+    const { name, population, flag } = await getCountryDetails(
+      country.country_id,
+    );
+    country.name = name;
+    country.population = numberWithCommas(population);
+    country.flag = flag;
+  });
+  console.log(countries);
 };

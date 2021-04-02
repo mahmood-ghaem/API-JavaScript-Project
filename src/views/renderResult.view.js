@@ -32,6 +32,23 @@ export const showError = (error, firstName) => {
   showLoading(false);
 };
 
+const showImageChartError = () => {
+  const intro = document.querySelector('.intro');
+  const div = document.createElement('div');
+  div.classList.add('col-md-6', 'p-5', 'error');
+  div.innerHTML = `
+<div class="d-flex p-5">
+  <i class="fas fa-exclamation-circle"></i>
+  <div>
+    <h2>Some thing was wrong</h2>
+    <p>
+      Can not load image chart!
+    </p>
+  </div>
+</div>`;
+  intro.appendChild(div);
+};
+
 const showFirstName = (firstName) => {
   const dynamicContent = document.querySelector('.dynamicContent');
   const h1 = document.createElement('h1');
@@ -47,16 +64,14 @@ const showEstimateData = (countries, chartImageUrl) => {
   const div = document.createElement('div');
   div.classList.add('row', 'm-5', 'intro');
   div.innerHTML = `
-<div class="col-md-6 p-5">
+<div class="col-lg-6 p-5">
   <div class="d-flex p-5">
     <i class="far fa-edit"></i>
     <div>
       <h2>Result</h2>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam ex
-        asperiores doloribus a temporibus quos sint aperiam? Vitae quisquam
-        molestiae quod qui. Fugiat quisquam repellendus nobis recusandae,
-        quam odio hic?
+      In the list below, you can see the result of the predicted nationality of the name you entered. 
+      Also, in the chart, you can see the percent of the prediction in the form of a chart.
       </p>
     </div>
   </div>
@@ -64,34 +79,53 @@ const showEstimateData = (countries, chartImageUrl) => {
     <div class="d-flex ps-5 pb-3">
       <div class="numberCircle">1</div>
       <div class="ms-4">
-        <h3>Country: ${countries[0].country_id}</h3>
+        <img class="flag" src="${countries[0].flag}" alt="${
+    countries[0].name
+  }" />
+        <h3>${countries[0].name}</h3>
         <p>probability: ${Math.round(countries[0].probability)}%</p>
+        <p>population: ${countries[0].population}</p>
       </div>
     </div>
     <div class="d-flex ps-5 pb-3">
       <div class="numberCircle">2</div>
       <div class="ms-4">
-      <h3>Country: ${countries[1].country_id}</h3>
-      <p>probability: ${Math.round(countries[1].probability)}%</p>
+        <img class="flag" src="${countries[1].flag}" alt="${
+    countries[1].name
+  }" />
+        <h3>${countries[1].name}</h3>
+        <p>probability: ${Math.round(countries[1].probability)}%</p>
+        <p>population: ${countries[1].population}</p>
       </div>
     </div>
     <div class="d-flex ps-5 pb-3">
       <div class="numberCircle">3</div>
       <div class="ms-4">
-      <h3>Country: ${countries[2].country_id}</h3>
-      <p>probability: ${Math.round(countries[2].probability)}%</p>
+        <img class="flag" src="${countries[2].flag}" alt="${
+    countries[2].name
+  }" />
+        <h3>${countries[2].name}</h3>
+        <p>probability: ${Math.round(countries[2].probability)}%</p>
+        <p>population: ${countries[2].population}</p>
       </div>
     </div>
   </div>
 </div>
-<div class="col-md-6 p-5">
+<div class="col-lg-6 p-5 image-chart">
   <img
     id="image_chart"
     src="${chartImageUrl}"
     alt="image-chart"
   />
 </div>`;
+
   dynamicContent.appendChild(div);
+
+  if (chartImageUrl == '') {
+    const imageChart = document.querySelector('.image-chart');
+    imageChart.remove();
+    showImageChartError();
+  }
 };
 
 const deleteDynamicContentElements = () => {
