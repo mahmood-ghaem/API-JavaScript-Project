@@ -6,11 +6,11 @@ import {
   showLoading,
 } from '../views/manipulationDom.view.js';
 
+import { changePages } from '../logic/changePages.logic.js';
+
 export const renderResult = ({ name, country, chartImageUrl }) => {
-  setTimeout(() => {
-    deleteIntroContent();
-    showEstimateData(name, country, chartImageUrl);
-  }, 1000);
+  changePages('result');
+  showEstimateData(name, country, chartImageUrl);
 };
 
 export const showError = (error, firstName) => {

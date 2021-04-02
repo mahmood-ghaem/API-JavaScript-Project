@@ -1,4 +1,7 @@
+'use strict';
+
 export const changeContentVisibility = (toggle, elementClassName) => {
+  console.log('changeContentVisibility: ', elementClassName, toggle);
   const content = document.querySelector(`.${elementClassName}`);
   switch (toggle) {
     case true:
@@ -11,6 +14,7 @@ export const changeContentVisibility = (toggle, elementClassName) => {
 };
 
 export const changeContentDisplay = (toggle, elementClassName) => {
+  console.log('changeContentDisplay: ', elementClassName, toggle);
   const content = document.querySelector(`.${elementClassName}`);
   switch (toggle) {
     case true:

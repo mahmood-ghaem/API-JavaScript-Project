@@ -10,13 +10,6 @@ import {
 
 import { renderResult, showError } from '../views/renderResult.view.js';
 
-import {
-  changeContentVisibility,
-  showLoading,
-} from '../views/manipulationDom.view.js';
-
-let currentPage = 'home';
-
 /**
  * @estimateNationality
  * Fetch data from https://nationalize.io/
@@ -30,19 +23,6 @@ export const estimateNationality = async () => {
     showError('Please enter the name correctly!', firstName);
     return;
   }
-  switch (currentPage) {
-    case 'home':
-      changeContentVisibility(false, 'introContent');
-      break;
-    case 'result':
-      changeContentVisibility(false, 'resultContent');
-      break;
-    case 'error':
-      changeContentVisibility(false, 'errorContent');
-      break;
-  }
-
-  showLoading(true);
   const { name, country } = await getCountries();
 
   if (country != undefined) {
@@ -53,15 +33,9 @@ export const estimateNationality = async () => {
       addCountryDetails(country);
       const chartImageUrl = await getChart(country);
       renderResult({ name, country, chartImageUrl });
-      currentPage = 'result';
-      setTimeout(() => {
-        showLoading(false);
-        changeContentVisibility(true, 'resultContent');
-      }, 1000);
     }
   } else {
     showError('Request error!', firstName);
-    currentPage = 'error';
   }
 };
 

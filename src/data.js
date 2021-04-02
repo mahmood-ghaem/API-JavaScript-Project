@@ -6,7 +6,7 @@
  * that we will concatenate the first name to it.
  */
 
-//export let currentPage = 'home';
+export const currentPage = { key: 'home' };
 
 export const estimateNationalityAddress = 'https://api.nationalize.io/?name=';
 
