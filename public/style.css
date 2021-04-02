@@ -1,10 +1,25 @@
+/* 
+*  CSS TABLE OF CONTENTS
+*   
+*  1.0 - Fonts
+*  2.0 - Reset
+*  3.0 - Globals
+*  4.0 - Root Container
+*  5.0 - Header
+*  6.0 - Main
+*  7.0 - Footer
+*  8.0 - Media Query and Animation
+*
+*/
+
+/******************** 1.0 - Fonts ********************/
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
+/******************** 2.0 - Reset ********************/
 :root {
   /* https://medium.com/code-better/css-units-for-font-size-px-em-rem-79f7e592bb97 */
   font-size: 62.5%;
 }
-
 *,
 *::before,
 *::after {
@@ -16,21 +31,15 @@ a {
 a:hover {
   text-decoration: none;
 }
-html {
-}
+
+/******************** 3.0 - Globals ********************/
 body {
   font-family: 'Lato', sans-serif;
   font-size: 1.5rem;
   cursor: default;
   color: #434345;
 }
-/* body:after {
-  content: '';
-  background: #191919 url(../public/images/background-02-481x360.png);
-  height: 100px;
-  width: 100%;
-  display: block;
-} */
+
 h1 {
   font-size: 2.5em;
 }
@@ -46,15 +55,20 @@ h3 {
 h4 {
   font-size: 1.4em;
 }
+
 p {
   text-align: justify;
   text-justify: inter-word;
 }
+
+/******************** 4.0 - Root Container ********************/
 .container {
   display: flex;
   flex-direction: column;
   min-height: 100%;
 }
+
+/******************** 5.0 - Header ********************/
 .header {
   background-color: #191919;
   justify-self: flex-start;
@@ -96,6 +110,8 @@ p {
 .social-media a:hover {
   color: #b1b1b1;
 }
+
+/******************** 6.0 - Main ********************/
 .pageContent {
   flex-grow: 1;
   position: relative;
@@ -124,87 +140,6 @@ p {
   z-index: 1;
   background: #ffffff;
 }
-.footer {
-  background: #191919 url(../public/images/background-02-481x360.png);
-  justify-self: self-end;
-  min-height: 200px;
-  margin-top: -1px;
-  display: block;
-  padding-top: 57px;
-  text-align: center;
-}
-
-.first-name-input {
-  width: 311px;
-}
-.first-name-input:focus {
-  outline: none;
-  background-color: transparent;
-}
-.estimate-nationality-button {
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-  transition: 0.2s;
-  transition-delay: 0.1s;
-  backface-visibility: hidden;
-  display: inline-block;
-  text-align: center;
-  text-decoration: none;
-}
-
-.first-name-input,
-.estimate-nationality-button {
-  color: #ffffff;
-  background-color: transparent;
-  border: 2px solid #fff;
-  padding: 17px 24px;
-  font-size: 17px;
-  line-height: 32px;
-  border-radius: 5px;
-  white-space: nowrap;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-weight: 900;
-  vertical-align: middle;
-  user-select: none;
-  margin: 5px;
-}
-.estimate-nationality-button:before {
-  left: -20px;
-  transform: translate(-50%, -50%);
-}
-.estimate-nationality-button:after {
-  right: -20px;
-  transform: translate(50%, -50%);
-}
-.estimate-nationality-button:before,
-.estimate-nationality-button:after {
-  position: absolute;
-  top: 50%;
-  content: '';
-  width: 20px;
-  height: 20px;
-  background: #fff;
-  border-radius: 50%;
-  transition: 0.5s;
-  z-index: -1;
-}
-.estimate-nationality-button:hover {
-  color: #434345;
-  background-color: #ffffff;
-  border-color: #ffffff;
-  outline: none;
-  transition-delay: 0.45s;
-}
-.estimate-nationality-button:hover:before {
-  -webkit-animation: criss-cross-left 0.8s;
-  animation: criss-cross-left 0.8s;
-}
-.estimate-nationality-button:hover:after {
-  -webkit-animation: criss-cross-right 0.8s;
-  animation: criss-cross-right 0.8s;
-}
 
 .intro i,
 .result i {
@@ -221,13 +156,7 @@ p {
   font-size: 3em;
   padding-right: 20px;
 }
-.copyright a {
-  color: #434345;
-  transition: 0.3s;
-}
-.copyright a:hover {
-  color: #b1b1b1;
-}
+
 .loading {
   position: fixed;
   left: 0;
@@ -283,6 +212,100 @@ p {
   padding-top: 0px;
 }
 
+/******************** 7.0 - Footer ********************/
+.footer {
+  background: #191919 url(../public/images/background-02-481x360.png);
+  justify-self: self-end;
+  min-height: 200px;
+  margin-top: -1px;
+  display: block;
+  padding-top: 57px;
+  text-align: center;
+}
+
+.first-name-input {
+  width: 311px;
+}
+.first-name-input:focus {
+  outline: none;
+  background-color: transparent;
+}
+
+.estimate-nationality-button {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: 0.2s;
+  transition-delay: 0.1s;
+  backface-visibility: hidden;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.first-name-input,
+.estimate-nationality-button {
+  color: #ffffff;
+  background-color: transparent;
+  border: 2px solid #fff;
+  padding: 17px 24px;
+  font-size: 17px;
+  line-height: 32px;
+  border-radius: 5px;
+  white-space: nowrap;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 900;
+  vertical-align: middle;
+  user-select: none;
+  margin: 5px;
+}
+
+.estimate-nationality-button:before {
+  left: -20px;
+  transform: translate(-50%, -50%);
+}
+.estimate-nationality-button:after {
+  right: -20px;
+  transform: translate(50%, -50%);
+}
+.estimate-nationality-button:before,
+.estimate-nationality-button:after {
+  position: absolute;
+  top: 50%;
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.5s;
+  z-index: -1;
+}
+.estimate-nationality-button:hover {
+  color: #434345;
+  background-color: #ffffff;
+  border-color: #ffffff;
+  outline: none;
+  transition-delay: 0.45s;
+}
+.estimate-nationality-button:hover:before {
+  -webkit-animation: criss-cross-left 0.8s;
+  animation: criss-cross-left 0.8s;
+}
+.estimate-nationality-button:hover:after {
+  -webkit-animation: criss-cross-right 0.8s;
+  animation: criss-cross-right 0.8s;
+}
+
+.copyright a {
+  color: #434345;
+  transition: 0.3s;
+}
+.copyright a:hover {
+  color: #b1b1b1;
+}
+
+/******************** 8.0 - Media Query and Animation ********************/
 @media only screen and (min-width: 992px) {
   .image-chart img {
     padding-top: 160px;

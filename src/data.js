@@ -1,11 +1,5 @@
 'use strict';
 
-/**
- * @estimateNationalityAddress
- * estimate nationality address is API link
- * that we will concatenate the first name to it.
- */
-
 export const currentPage = { key: 'home' };
 
 export const estimateNationalityAddress = 'https://api.nationalize.io/?name=';
