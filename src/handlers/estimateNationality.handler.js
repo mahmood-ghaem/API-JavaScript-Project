@@ -10,12 +10,6 @@ import {
 
 import { renderResult, showError } from '../views/renderResult.view.js';
 
-/**
- * @estimateNationality
- * Fetch data from https://nationalize.io/
- * to estimate the nationality of a first name
- */
-
 export const estimateNationality = async () => {
   const firstName = document.getElementById('first_name_input').value;
 

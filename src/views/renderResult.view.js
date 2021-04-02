@@ -8,36 +8,6 @@ export const renderResult = ({ name, country, chartImageUrl }) => {
   showEstimateData(name, country, chartImageUrl);
 };
 
-export const showError = (error, firstName) => {
-  changePages('error');
-  document.querySelector(
-    '#error_header',
-  ).textContent = `Predict the nationality of "${firstName.toUpperCase()}"`;
-
-  document.querySelector(
-    '#error_text',
-  ).textContent = `Error received from the system: ${error}`;
-};
-
-const showImageChartError = () => {
-  const imageChart = document.querySelector('.image-chart-error');
-  const divParent = document.createElement('div');
-  divParent.classList.add('d-flex', 'p-5');
-  const icon = document.createElement('i');
-  icon.classList.add('fas', 'fa-exclamation-circle');
-  const h2 = document.createElement('h2');
-  h2.textContent = 'Some thing was wrong';
-  const p = document.createElement('p');
-  p.textContent = 'Can not load image chart!';
-  const divChild = document.createElement('div');
-
-  divChild.appendChild(h2);
-  divChild.appendChild(p);
-  divParent.appendChild(icon);
-  divParent.appendChild(divChild);
-  imageChart.appendChild(divParent);
-};
-
 const showEstimateData = (name, countries, chartImageUrl) => {
   document.querySelector(
     '#result_header',
@@ -75,4 +45,34 @@ const showEstimateData = (name, countries, chartImageUrl) => {
     document.querySelector('#image_chart').setAttribute('src', chartImageUrl);
     changeContentDisplay(true, 'image-chart');
   }
+};
+
+export const showError = (error, firstName) => {
+  changePages('error');
+  document.querySelector(
+    '#error_header',
+  ).textContent = `Predict the nationality of "${firstName.toUpperCase()}"`;
+
+  document.querySelector(
+    '#error_text',
+  ).textContent = `Error received from the system: ${error}`;
+};
+
+const showImageChartError = () => {
+  const imageChart = document.querySelector('.image-chart-error');
+  const divParent = document.createElement('div');
+  divParent.classList.add('d-flex', 'p-5');
+  const icon = document.createElement('i');
+  icon.classList.add('fas', 'fa-exclamation-circle');
+  const h2 = document.createElement('h2');
+  h2.textContent = 'Some thing was wrong';
+  const p = document.createElement('p');
+  p.textContent = 'Can not load image chart!';
+  const divChild = document.createElement('div');
+
+  divChild.appendChild(h2);
+  divChild.appendChild(p);
+  divParent.appendChild(icon);
+  divParent.appendChild(divChild);
+  imageChart.appendChild(divParent);
 };
