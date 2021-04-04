@@ -22,10 +22,12 @@ export const estimateNationality = async () => {
     if (country.length < 3) {
       showError('The name you entered was not in our database!', firstName);
     } else {
-      changeProbabilityPercent(country);
-      await addCountryDetails(country);
+      const countryProbabilityPercent = await changeProbabilityPercent(country);
+      const countryWithDetails = await addCountryDetails(
+        countryProbabilityPercent,
+      );
       const chartImageUrl = await getChart(country);
-      renderResult({ name, country, chartImageUrl });
+      renderResult({ name, countryWithDetails, chartImageUrl });
     }
   } else {
     showError('Request error!', firstName);
@@ -33,27 +35,46 @@ export const estimateNationality = async () => {
 };
 
 const changeProbabilityPercent = (countries) => {
+  const countriesClone = JSON.parse(JSON.stringify(countries));
   const chartLabels = [];
   const chartProbabilities = [];
-  countries.forEach((country) => {
+  countriesClone.forEach((country) => {
     chartLabels.push(country.country_id);
     chartProbabilities.push(country.probability);
   });
   const probabilitiesSum = chartProbabilities.reduce(
     (total, num) => total + num,
   );
-  countries.forEach((country) => {
+  countriesClone.forEach((country) => {
     country.probability = (country.probability * 100) / probabilitiesSum;
   });
+  return countriesClone;
 };
 
 const addCountryDetails = async (countries) => {
-  await countries.forEach(async (country) => {
-    const { name, population, flag } = await getCountryDetails(
-      country.country_id,
-    );
-    country.name = name;
-    country.population = numberWithCommas(population);
-    country.flag = flag;
-  });
+  const countriesClone = JSON.parse(JSON.stringify(countries));
+
+  console.log('countriesClone: ', countriesClone);
+
+  Promise.all(
+    countriesClone.map((country) =>
+      getCountryDetails(country.country_id).then((resp) => {
+        const { name, population, flag } = resp;
+        country.name = name;
+        country.population = numberWithCommas(population);
+        country.flag = flag;
+      }),
+    ),
+  );
+  console.log('countriesClone: ', countriesClone);
+  return countriesClone;
+
+  // await countries.forEach(async (country) => {
+  //   const { name, population, flag } = await getCountryDetails(
+  //     country.country_id,
+  //   );
+  //   country.name = name;
+  //   country.population = numberWithCommas(population);
+  //   country.flag = flag;
+  // });
 };

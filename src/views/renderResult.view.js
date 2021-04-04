@@ -3,9 +3,9 @@
 import { changePages } from '../logic/changePages.logic.js';
 import { changeContentDisplay } from '../views/manipulationDom.view.js';
 
-export const renderResult = ({ name, country, chartImageUrl }) => {
+export const renderResult = ({ name, countryWithDetails, chartImageUrl }) => {
   changePages('result');
-  showEstimateData(name, country, chartImageUrl);
+  showEstimateData(name, countryWithDetails, chartImageUrl);
 };
 
 const showEstimateData = (name, countries, chartImageUrl) => {
