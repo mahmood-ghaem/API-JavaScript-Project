@@ -10,7 +10,11 @@ import {
 
 import { renderResult, showError } from '../views/renderResult.view.js';
 
+import { showLoading } from '../views/manipulationDom.view.js';
+
 export const estimateNationality = async () => {
+  showLoading(true);
+
   const firstName = document.getElementById('first_name_input').value;
 
   if (!checkOnlyLetters(firstName)) {

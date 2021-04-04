@@ -9,7 +9,6 @@ import {
 
 export const changePages = (page) => {
   if (currentPage.key !== page) {
-    showLoading(true);
     changeContentVisibility(false, `${currentPage.key}Content`);
     setTimeout(() => {
       changeContentDisplay(false, `${currentPage.key}Content`);
@@ -20,6 +19,13 @@ export const changePages = (page) => {
       showLoading(false);
       currentPage.key = page;
     }, 1100);
+  } else {
+    changeContentVisibility(false, `${currentPage.key}Content`);
+    changeContentDisplay(false, `${currentPage.key}Content`);
+    changeContentDisplay(true, `${page}Content`);
+    changeContentVisibility(true, `${page}Content`);
+    showLoading(false);
+    currentPage.key = page;
   }
   if (page === 'home') {
     changeContentVisibility(false, 'home-button');

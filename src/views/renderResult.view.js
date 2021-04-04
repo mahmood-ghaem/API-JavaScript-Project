@@ -13,6 +13,8 @@ const showEstimateData = (name, countries, chartImageUrl) => {
     '#result_header',
   ).textContent = `Predict the nationality of "${name.toUpperCase()}"`;
 
+  clearCountryElements();
+
   for (let i = 0; i < 3; i++) {
     if (countries[i].flag != undefined) {
       document
@@ -24,6 +26,8 @@ const showEstimateData = (name, countries, chartImageUrl) => {
     }
     if (countries[i].name != undefined) {
       document.querySelector(`#country${i}`).textContent = countries[i].name;
+    } else if (countries[i].name === '' || countries[i].name === undefined) {
+      document.querySelector(`#country${i}`).textContent = 'Other countries';
     } else {
       document.querySelector(`#country${i}`).textContent =
         countries[i].country_id;
@@ -44,6 +48,16 @@ const showEstimateData = (name, countries, chartImageUrl) => {
   } else {
     document.querySelector('#image_chart').setAttribute('src', chartImageUrl);
     changeContentDisplay(true, 'image-chart');
+  }
+};
+
+const clearCountryElements = () => {
+  for (let i = 0; i < 3; i++) {
+    document.querySelector(`#flag${i}`).setAttribute('src', '');
+    document.querySelector(`#flag${i}`).setAttribute('alt', '');
+    document.querySelector(`#country${i}`).textContent = '';
+    document.querySelector(`#population${i}`).textContent = 'Population: ';
+    document.querySelector(`#probability${i}`).textContent = 'probability: ';
   }
 };
 
