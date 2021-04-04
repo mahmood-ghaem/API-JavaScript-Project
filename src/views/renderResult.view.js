@@ -13,6 +13,8 @@ const showEstimateData = (name, countries, chartImageUrl) => {
     '#result_header',
   ).textContent = `Predict the nationality of "${name.toUpperCase()}"`;
 
+  document.title = `Predict the nationality of "${name.toUpperCase()}"`;
+
   clearCountryElements();
 
   for (let i = 0; i < 3; i++) {
