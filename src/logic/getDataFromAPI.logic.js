@@ -49,5 +49,7 @@ const createChartLinkAddress = (countries) => {
 
   return `${imageChartPrefixAddress}&chd=t:${chartProbabilities.join(
     ',',
-  )}&chl=${chartLabels.join('|')}${imageChartPostfixAddress}`;
+  )}&chl=${chartLabels.join('|')}${
+    imageChartPostfixAddress[Math.floor(Math.random() * 5)]
+  }`;
 };
