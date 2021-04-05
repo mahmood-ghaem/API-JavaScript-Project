@@ -211,6 +211,10 @@ p {
 .image-chart img {
   padding-top: 0px;
 }
+.link-copied-hint {
+  background-color: #d9d9d9;
+  padding: 5px;
+}
 
 /******************** 7.0 - Footer ********************/
 .footer {
@@ -307,9 +311,9 @@ p {
 
 /******************** 8.0 - Media Query and Animation ********************/
 @media only screen and (min-width: 992px) {
-  .image-chart img {
+  /* .image-chart img {
     padding-top: 160px;
-  }
+  } */
 }
 
 @-webkit-keyframes criss-cross-left {

@@ -25,7 +25,7 @@
           <i class="fas fa-cogs"></i>&nbsp;{ api } <span>JavaScript</span>
         </div>
         <div class="social-media">
-          <a class="home-button visible hidden" href="#">
+          <a class="home-button visible hidden" href="javascript:void(0)">
             <i class="fas fa-home"></i>
           </a>
           <a
@@ -123,6 +123,29 @@
                   </p>
                 </div>
               </div>
+            </div>
+            <div class="col-lg-6 p-lg-5">
+              <div class="d-flex p-5">
+                <i class="fas fa-share-alt"></i>
+                <div>
+                  <h2>Share</h2>
+                  <p>
+                    The link below is the result of the name you entered. You
+                    can copy it by clicking on it and share it in the social
+                    media.
+                  </p>
+                  <a class="copy-share-link" href="javascript:void(0)">
+                    <span class="share-link-text">
+                      http://127.0.0.1:5500/index.html?name=ali
+                    </span>
+                  </a>
+                  <span class="link-copied-hint visible hidden">
+                    Link copied!
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 p-lg-5">
               <div class="ms-5 ps-5">
                 <div class="d-flex ps-5 pb-3">
                   <div class="numberCircle">1</div>
@@ -153,7 +176,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-6 p-5">
+            <div class="col-lg-6 p-lg-5">
               <div class="image-chart-error"></div>
               <div class="image-chart">
                 <img id="image_chart" alt="image-chart" />
@@ -187,9 +210,9 @@
           placeholder="Enter Your First Name..."
           autocomplete="off"
         />
-        <a class="estimate-nationality-button" href="#">
+        <button class="estimate-nationality-button">
           Estimate the Nationality
-        </a>
+        </button>
         <div class="m-4 copyright">
           <span>
             Copyright 2021 ©
@@ -208,7 +231,6 @@
         </div>
       </div>
     </div>
-
     <script src="./src/init/index.js" type="module"></script>
   </body>
 </html>

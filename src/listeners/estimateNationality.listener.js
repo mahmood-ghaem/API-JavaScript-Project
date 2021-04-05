@@ -1,6 +1,9 @@
 'use strict';
 
-import { estimateNationality } from '../handlers/estimateNationality.handler.js';
+import {
+  estimateNationality,
+  estimateNationalityByQueryString,
+} from '../handlers/estimateNationality.handler.js';
 
 const estimateNationalityButton = document.querySelector(
   '.estimate-nationality-button',
@@ -14,3 +17,10 @@ firstNameInput.addEventListener('keypress', function (e) {
     estimateNationality();
   }
 });
+
+const urlParams = new URLSearchParams(window.location.search);
+const firstName = urlParams.get('name');
+
+if (firstName != undefined) {
+  estimateNationalityByQueryString(firstName);
+}

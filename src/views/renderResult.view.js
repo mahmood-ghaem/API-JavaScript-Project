@@ -15,7 +15,15 @@ const showEstimateData = (name, countries, chartImageUrl) => {
 
   document.title = `Predict the nationality of "${name.toUpperCase()}"`;
 
-  clearCountryElements();
+  clearResultElements();
+  window.history.replaceState(null, null, `?name=${name}`);
+  document.querySelector('.share-link-text').textContent = document.URL;
+  // document.querySelector(
+  //   '.share-link-text',
+  // ).textContent = `${document.URL.substr(
+  //   0,
+  //   document.URL.indexOf('.html'),
+  // )}.html?name=${name}`;
 
   for (let i = 0; i < 3; i++) {
     if (countries[i].flag != undefined) {
@@ -53,7 +61,7 @@ const showEstimateData = (name, countries, chartImageUrl) => {
   }
 };
 
-const clearCountryElements = () => {
+const clearResultElements = () => {
   for (let i = 0; i < 3; i++) {
     document.querySelector(`#flag${i}`).setAttribute('src', '');
     document.querySelector(`#flag${i}`).setAttribute('alt', '');
@@ -61,6 +69,12 @@ const clearCountryElements = () => {
     document.querySelector(`#population${i}`).textContent = 'Population: ';
     document.querySelector(`#probability${i}`).textContent = 'probability: ';
   }
+  document.querySelector('.link-copied-hint').classList.add('hidden');
+  document.querySelector('.share-link-text').textContent = '';
+  // document.location.href = `${document.URL.substr(
+  //   0,
+  //   document.URL.indexOf('.html'),
+  // )}.html`;
 };
 
 export const showError = (error, firstName) => {

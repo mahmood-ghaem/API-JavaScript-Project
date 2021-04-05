@@ -38,6 +38,11 @@ export const estimateNationality = async () => {
   }
 };
 
+export const estimateNationalityByQueryString = (firstName) => {
+  document.getElementById('first_name_input').value = firstName;
+  estimateNationality();
+};
+
 const changeProbabilityPercent = (countries) => {
   const countriesClone = JSON.parse(JSON.stringify(countries));
   const chartLabels = [];
@@ -58,8 +63,6 @@ const changeProbabilityPercent = (countries) => {
 const addCountryDetails = async (countries) => {
   const countriesClone = JSON.parse(JSON.stringify(countries));
 
-  console.log('countriesClone: ', countriesClone);
-
   Promise.all(
     countriesClone.map((country) =>
       getCountryDetails(country.country_id).then((resp) => {
@@ -70,7 +73,6 @@ const addCountryDetails = async (countries) => {
       }),
     ),
   );
-  console.log('countriesClone: ', countriesClone);
   return countriesClone;
 
   // await countries.forEach(async (country) => {
