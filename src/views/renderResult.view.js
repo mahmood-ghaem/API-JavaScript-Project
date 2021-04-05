@@ -13,10 +13,10 @@ const showEstimateData = (name, countries, chartImageUrl) => {
     '#result_header',
   ).textContent = `Predict the nationality of "${name.toUpperCase()}"`;
 
-  document.title = `Predict the nationality of "${name.toUpperCase()}"`;
-
   clearResultElements();
-  window.history.replaceState(null, null, `?name=${name}`);
+
+  changeHeaderTitleQueryStringName(name);
+
   document.querySelector('.share-link-text').textContent = document.URL;
   // document.querySelector(
   //   '.share-link-text',
@@ -88,10 +88,7 @@ const clearResultElements = () => {
 
 export const showError = (error, firstName) => {
   changePages('error');
-  document.querySelector(
-    '#error_header',
-  ).textContent = `Predict the nationality of "${firstName.toUpperCase()}"`;
-
+  changeHeaderTitleQueryStringName(firstName);
   document.querySelector(
     '#error_text',
   ).textContent = `Error received from the system: ${error}`;
@@ -114,4 +111,14 @@ const showImageChartError = () => {
   divParent.appendChild(icon);
   divParent.appendChild(divChild);
   imageChart.appendChild(divParent);
+};
+
+const changeHeaderTitleQueryStringName = (firstName) => {
+  document.querySelector(
+    '#error_header',
+  ).textContent = `Predict the nationality of "${firstName.toUpperCase()}"`;
+
+  window.history.replaceState(null, null, `?name=${firstName}`);
+
+  document.title = `Predict the nationality of "${firstName.toUpperCase()}"`;
 };
