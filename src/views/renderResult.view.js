@@ -36,6 +36,12 @@ const showEstimateData = (name, countries, chartImageUrl) => {
     }
     if (countries[i].name != undefined) {
       document.querySelector(`#country${i}`).textContent = countries[i].name;
+      document.querySelector(
+        `#wiki${i}`,
+      ).href = `https://en.wikipedia.org/wiki/${countries[i].name}`;
+      document.querySelector(
+        `#wiki${i}`,
+      ).textContent = `Read more about ${countries[i].name}`;
     } else if (countries[i].name === '' || countries[i].name === undefined) {
       document.querySelector(`#country${i}`).textContent = 'Other countries';
     } else {
@@ -68,9 +74,12 @@ const clearResultElements = () => {
     document.querySelector(`#country${i}`).textContent = '';
     document.querySelector(`#population${i}`).textContent = 'Population: ';
     document.querySelector(`#probability${i}`).textContent = 'probability: ';
+    document.querySelector(`#wiki${i}`).href = '';
+    document.querySelector(`#wiki${i}`).textContent = '';
   }
   document.querySelector('.link-copied-hint').classList.add('hidden');
   document.querySelector('.share-link-text').textContent = '';
+
   // document.location.href = `${document.URL.substr(
   //   0,
   //   document.URL.indexOf('.html'),
